@@ -154,15 +154,16 @@ def growth_results():
 def main():
     st.set_page_config(page_title="극지식물 최적 EC 농도 연구", layout='wide')
     
-    # 사이드바 메뉴
-    menu = ["📖 실험 개요", "🌡️ 환경 데이터", "📊 생육 결과"]
-    choice = st.sidebar.radio("탭 선택", menu)
+    # 탭 생성
+    tabs = st.tabs(["📖 실험 개요", "🌡️ 환경 데이터", "📊 생육 결과"])
     
-    if choice == "📖 실험 개요":
+    with tabs[0]:
         experiment_overview()
-    elif choice == "🌡️ 환경 데이터":
+    
+    with tabs[1]:
         environment_data()
-    elif choice == "📊 생육 결과":
+    
+    with tabs[2]:
         growth_results()
 
 if __name__ == "__main__":
