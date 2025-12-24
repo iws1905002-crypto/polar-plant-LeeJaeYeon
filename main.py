@@ -142,9 +142,11 @@ def growth_results():
     # 생육 결과 다운로드 버튼
     buffer = io.BytesIO()
     growth_data['송도고'].to_excel(buffer, index=False, engine="openpyxl")
-    buffer.seek(0)
-    
+    buffer.seek(0)  # 파일 포인터 초기화
+
+    # 다운로드 버튼 수정
     st.download_button(
+        label="송도고 생육결과 다운로드",
         data=buffer,
         file_name="송도고_생육결과.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
